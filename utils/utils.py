@@ -1,6 +1,7 @@
 import pymysql
 from utils.db_connection import get_db_connection
 from typing import Optional, Any, List, Dict
+import uuid
 
 async def run_query(query: str, params: Optional[List[Any]] = None, fetchone: bool = False) -> Optional[Dict[str, Any]]:
     """
@@ -31,3 +32,6 @@ async def run_query(query: str, params: Optional[List[Any]] = None, fetchone: bo
             connection.close()
 
     return None
+
+def generate_order_id():
+    return str(uuid.uuid4())

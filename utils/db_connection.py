@@ -1,13 +1,17 @@
 import pymysql
+import os
 from pymysql import MySQLError
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Replace with your MySQL server details
 DATABASE_CONFIG = {
-    "host": "localhost",  # MySQL host (do not include the port number here)
-    "port": 3306,         # MySQL port
-    "user": "root",       # MySQL username
-    "password": "root",   # MySQL password
-    "database": "parspec",  # Your database name
+    "host": os.getenv("DB_HOST"),
+    "port": os.getenv("DB_PORT"),
+    "user": os.getenv("DB_USER"),
+    "password": os.getenv("DB_PASSWORD"),
+    "database": os.getenv("DB_DATABASE"),
 }
 
 def get_db_connection():
