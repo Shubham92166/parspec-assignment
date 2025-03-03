@@ -7,10 +7,15 @@ Get Orders by Status: Fetch orders based on their status (Pending, Processing, C
 Metrics: Calculate and return the average processing time of all processed orders, total orders processed, total orders completed, total pending orders.
 
 Technologies Used:
+
 FastAPI: For creating the web API.
+
 Uvicorn: ASGI server for running the FastAPI application.
+
 Pydantic: For data validation and serialization.
+
 MySQL: For storing data in database.
+
 pytest: For unit testing the application.
 
 Setup:
@@ -166,6 +171,8 @@ Design Decisions:
 1. FastAPI Web Framework: Since we are working on Asynchronous order processing then we need to use such a framework which could support asnyc without compromising the performance of the application. In such case, FastAPI is a better choice as it supports async calls and it doesn't affect the system performance. It can scale and handle large number of requests concurrently improving the overall effective utitlisation of resources.
 
 2. MySQL Database: in Ecom applications, mostly the data remains structured so we need a database which stores data in structured fashion. Thus, MySQL or PostgreSQL are better choice. If load increases then we can migrate to PostgreSQL as it can scale better compared to MySQL.
+
+3. Creating order_id in the code itself instead of using db auto increment as while scaling this would create problem because two db instance might generate same order_id as it is just auto incremented value and this would create conflict because two orders cannot have same order_id. So, there should be a central logic to create a unique order_id. For now, I am also storing it in db for any future use case.
 
     Database schema:
     Orders table creation
