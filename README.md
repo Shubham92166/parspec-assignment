@@ -161,14 +161,16 @@ Response Body:
     }
 
 Design Decisions:
-    1. FastAPI Web Framework: Since we are working on Asynchronous order processing then we need to use such a framework which could support asnyc without compromising the performance of the application. In such case, FastAPI is a better choice as it supports async calls and it doesn't affect the system performance. It can scale and handle large number of requests concurrently improving the overall effective utitlisation of resources.
 
-    2. MySQL Database: in Ecom applications, mostly the data remains structured so we need a database which stores data in structured fashion. Thus, MySQL or PostgreSQL are better choice. If load increases then we can migrate to PostgreSQL as it can scale better compared to MySQL.
+
+1. FastAPI Web Framework: Since we are working on Asynchronous order processing then we need to use such a framework which could support asnyc without compromising the performance of the application. In such case, FastAPI is a better choice as it supports async calls and it doesn't affect the system performance. It can scale and handle large number of requests concurrently improving the overall effective utitlisation of resources.
+
+2. MySQL Database: in Ecom applications, mostly the data remains structured so we need a database which stores data in structured fashion. Thus, MySQL or PostgreSQL are better choice. If load increases then we can migrate to PostgreSQL as it can scale better compared to MySQL.
 
     Database schema:
     Orders table creation
 
-    CREATE TABLE orders (
+        CREATE TABLE orders (
         order_id VARCHAR(50) NOT NULL,
         user_id INT NOT NULL,
         item_ids JSON NOT NULL,
@@ -177,7 +179,7 @@ Design Decisions:
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
         PRIMARY KEY (order_id)
-    );
+        );
 
 
 
