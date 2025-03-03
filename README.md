@@ -181,5 +181,9 @@ Design Decisions:
         PRIMARY KEY (order_id)
         );
 
+Assumtions made during development:
+1. The Ecom application will have structured data
+2. System should be reliable and available and performance will be a concern
+3. API requests per second will be around 1,000  
 
 
