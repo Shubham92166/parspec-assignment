@@ -20,8 +20,8 @@ async def create_order(
 
 async def update_order_status(order_id: int, status):
     params = [
-        order_id,
-        status
+        status,
+        str(order_id),
     ]
     return await run_query(query=order_query.UPDATE_ORDER_STATUS, params=params)
     
@@ -30,7 +30,7 @@ async def orders_list_by_status(status):
     params = [
         status
     ]
-    return await run_query(query=order_query.FETCH_QUERY_BY_STATUS, params= params)
+    return await run_query(query=order_query.FETCH_ORDER_BY_STATUS, params= params)
 
 async def count_orders_status(status: str):
     params = [

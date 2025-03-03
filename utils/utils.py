@@ -2,6 +2,7 @@ import pymysql
 from utils.db_connection import get_db_connection
 from typing import Optional, Any, List, Dict
 import uuid
+from fastapi import HTTPException, status
 
 async def run_query(query: str, params: Optional[List[Any]] = None, fetchone: bool = False) -> Optional[Dict[str, Any]]:
     """
@@ -28,6 +29,7 @@ async def run_query(query: str, params: Optional[List[Any]] = None, fetchone: bo
                 return result
         except pymysql.MySQLError as e:
             print(f"Error executing query: {e}")
+            raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
         finally:
             connection.close()
 

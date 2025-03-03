@@ -1,13 +1,13 @@
 from fastapi import APIRouter, HTTPException, status
 from model.order import OrderModel, OrderStatus
-from Service import orderService as order_service
+from Service import OrderService as order_service
 
 router = APIRouter()
 
 
 @router.post('/create-order/')
 async def create_order(
-    input_data: OrderModel     
+    input_data: OrderModel
 ):
     try:
         order_data = input_data
@@ -16,7 +16,7 @@ async def create_order(
             "status": status.HTTP_201_CREATED,
             "data" :  response
         }
-    except Exception as e:
+    except (ModuleNotFoundError, ValueError) as e:
         print(e)
         return HTTPException(status_code= status.HTTP_500_INTERNAL_SERVER_ERROR, detail="Something wen wrong!")
 
@@ -25,14 +25,16 @@ async def get_orders_by_status(status_name: str):
     try:
         order_status = status_name.upper()
         response = await order_service.fetch_all_orders_by_status(order_status)
-        return {
-            "status_code:": status.HTTP_200_OK,
-            "data" : response
-        }
-    except Exception as e:
-        print(e)
-        return HTTPException(status_code= status.HTTP_500_INTERNAL_SERVER_ERROR, detail= "Something went wrong!")
-    
+        print(response)
+        if not response:    
+            raise HTTPException(status_code= status.HTTP_500_INTERNAL_SERVER_ERROR, detail= "Something went wrong!")
+        return response
+        
+    except (ModuleNotFoundError, ValueError) as http_exc:
+        print(http_exc)
+        raise HTTPException(status_code= status.HTTP_500_INTERNAL_SERVER_ERROR, detail= "Something went wrong!")
+        
+
 
 
 
