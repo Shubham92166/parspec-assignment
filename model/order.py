@@ -1,6 +1,7 @@
 from enum import Enum
 from typing import List
 from pydantic import BaseModel
+
 class OrderModel(BaseModel):
     user_id: int
     item_ids: List[int]

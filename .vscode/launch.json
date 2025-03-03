@@ -12,7 +12,9 @@
             "module": "uvicorn",
             "args": [
                 "main:app",
-                "--reload"
+                "--reload",
+                "--log-level",
+                "debug"
             ],
             "jinja": true
         }
