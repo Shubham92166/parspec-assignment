@@ -21,14 +21,16 @@ Setup:
 2. Installation Steps
     1. Clone the repository:
     git clone https://github.com/Shubham92166/parspec-assignment.git
+
     cd parspec_assignment
 
-    2. Create and activate a virtual environment:
+    3. Create and activate a virtual environment:
+   
     On Windows:
     python -m venv venv
     .\venv\Scripts\activate
 
-    3. On macOS/Linux:
+   On macOS/Linux:
 
     python3 -m venv venv
     source venv/bin/activate
@@ -48,105 +50,105 @@ Setup:
 API Endpoints:
     POST order/create-order
     Create a new order asynchronously.
-
-    Request Body:
     
-    {
-    "user_id": 1,
-    "item_ids": [1, 2],
-    "total_amount": 100.0
-    }
-
-    Response body:
-
-    {
-    "status": 201,
-    "data": {
-        "order_id": "5eea1442-4b39-453a-8dff-04f658754eaf"
-    }
-
-    GET order/status/{status_name}
+Request Body:
+        
+            {
+            "user_id": 1,
+            "item_ids": [1, 2],
+            "total_amount": 100.0
+            }
     
-    Get orders by status asynchronously.
+Response body:
+    
+            {
+            "status": 201,
+            "data": {
+                "order_id": "5eea1442-4b39-453a-8dff-04f658754eaf"
+            }
 
-    Request Body:
+GET order/status/{status_name}
+    
+Get orders by status asynchronously.
 
-    URL Parameters:
-    1. status_name (required): The status of the order (e.g., "pending", "processing", "completed").
+Request Body:
 
-    Response Body:
+URL Parameters:
+1. status_name (required): The status of the order (e.g., "pending", "processing", "completed").
 
-    [
-        {
-            "order_id": "876aeac7-d30a-42b6-9262-8ed4cfb8a1d2",
-            "user_id": 3,
-            "items_id": "[4, 6]",
-            "total_amount": 220099.0,
-            "created_at": "COMPLETED",
-            "updated_at": "2025-03-03T08:54:00"
-        },
-        {
-            "order_id": "5ce460e1-dfc5-4e5e-8fe8-6fb7e3fe11ee",
-            "user_id": 3,
-            "items_id": "[4, 6]",
-            "total_amount": 220099.0,
-            "created_at": "COMPLETED",
-            "updated_at": "2025-03-03T08:57:09"
-        },
-        {
-            "order_id": "c8543d98-5712-4bf8-a0bf-bc0b51e93195",
-            "user_id": 3,
-            "items_id": "[4, 6]",
-            "total_amount": 220099.0,
-            "created_at": "COMPLETED",
-            "updated_at": "2025-03-03T09:00:22"
-        },
-        {
-            "order_id": "cb144fa9-3845-4dd5-aac9-017c545eb3e3",
-            "user_id": 3,
-            "items_id": "[4, 6]",
-            "total_amount": 220099.0,
-            "created_at": "COMPLETED",
-            "updated_at": "2025-03-03T10:55:47"
-        },
-        {
-            "order_id": "983e09da-c97e-465d-9806-ae519cfd589e",
-            "user_id": 3,
-            "items_id": "[4, 6]",
-            "total_amount": 220099.0,
-            "created_at": "COMPLETED",
-            "updated_at": "2025-03-03T10:56:36"
-        },
-        {
-            "order_id": "c696ea71-7cbf-4795-bc4d-95d99754835e",
-            "user_id": 3,
-            "items_id": "[4, 6]",
-            "total_amount": 220099.0,
-            "created_at": "COMPLETED",
-            "updated_at": "2025-03-03T10:56:39"
-        },
-        {
-            "order_id": "46a4d2a1-56f9-4e43-9d24-9199e8388f9d",
-            "user_id": 3,
-            "items_id": "[4, 6]",
-            "total_amount": 220099.0,
-            "created_at": "COMPLETED",
-            "updated_at": "2025-03-03T10:56:42"
-        },
-        {
-            "order_id": "5eea1442-4b39-453a-8dff-04f658754eaf",
-            "user_id": 3,
-            "items_id": "[4, 6]",
-            "total_amount": 220099.0,
-            "created_at": "COMPLETED",
-            "updated_at": "2025-03-03T12:14:28"
-        }
-    ]
+        Response Body:
 
-    GET /metrics
+        [
+            {
+                "order_id": "876aeac7-d30a-42b6-9262-8ed4cfb8a1d2",
+                "user_id": 3,
+                "items_id": "[4, 6]",
+                "total_amount": 220099.0,
+                "created_at": "COMPLETED",
+                "updated_at": "2025-03-03T08:54:00"
+            },
+            {
+                "order_id": "5ce460e1-dfc5-4e5e-8fe8-6fb7e3fe11ee",
+                "user_id": 3,
+                "items_id": "[4, 6]",
+                "total_amount": 220099.0,
+                "created_at": "COMPLETED",
+                "updated_at": "2025-03-03T08:57:09"
+            },
+            {
+                "order_id": "c8543d98-5712-4bf8-a0bf-bc0b51e93195",
+                "user_id": 3,
+                "items_id": "[4, 6]",
+                "total_amount": 220099.0,
+                "created_at": "COMPLETED",
+                "updated_at": "2025-03-03T09:00:22"
+            },
+            {
+                "order_id": "cb144fa9-3845-4dd5-aac9-017c545eb3e3",
+                "user_id": 3,
+                "items_id": "[4, 6]",
+                "total_amount": 220099.0,
+                "created_at": "COMPLETED",
+                "updated_at": "2025-03-03T10:55:47"
+            },
+            {
+                "order_id": "983e09da-c97e-465d-9806-ae519cfd589e",
+                "user_id": 3,
+                "items_id": "[4, 6]",
+                "total_amount": 220099.0,
+                "created_at": "COMPLETED",
+                "updated_at": "2025-03-03T10:56:36"
+            },
+            {
+                "order_id": "c696ea71-7cbf-4795-bc4d-95d99754835e",
+                "user_id": 3,
+                "items_id": "[4, 6]",
+                "total_amount": 220099.0,
+                "created_at": "COMPLETED",
+                "updated_at": "2025-03-03T10:56:39"
+            },
+            {
+                "order_id": "46a4d2a1-56f9-4e43-9d24-9199e8388f9d",
+                "user_id": 3,
+                "items_id": "[4, 6]",
+                "total_amount": 220099.0,
+                "created_at": "COMPLETED",
+                "updated_at": "2025-03-03T10:56:42"
+            },
+            {
+                "order_id": "5eea1442-4b39-453a-8dff-04f658754eaf",
+                "user_id": 3,
+                "items_id": "[4, 6]",
+                "total_amount": 220099.0,
+                "created_at": "COMPLETED",
+                "updated_at": "2025-03-03T12:14:28"
+            }
+        ]
+
+GET /metrics
     Get the order related metrics asynchronously.
 
-    Response Body:
+Response Body:
 
     {
     "data": {
